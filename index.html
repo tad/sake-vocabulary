@@ -1,0 +1,149 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sake Vocabulary · 酒ことば</title>
+<meta name="description" content="Daily sake vocabulary lessons: kanji and words from the brewery, in order.">
+<meta name="theme-color" content="#f7f3ec" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#16130f" media="(prefers-color-scheme: dark)">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🍶</text></svg>">
+<style>
+:root {
+  --bg: #f7f3ec; --card: #fffdf8; --ink: #2a241d; --muted: #7a6f62; --line: #e4dccf;
+  --accent: #9b3b2a; --accent-soft: #f3e3dc; --chip: #efe8dc;
+  --jp: "Hiragino Mincho ProN", "Yu Mincho", "Noto Serif JP", serif;
+  --sans: -apple-system, BlinkMacSystemFont, "Hiragino Sans", "Noto Sans JP", "Segoe UI", sans-serif;
+}
+@media (prefers-color-scheme: dark) {
+  :root { --bg: #16130f; --card: #1f1b16; --ink: #ece4d8; --muted: #a39684; --line: #352e26;
+          --accent: #e08a6f; --accent-soft: #3a2620; --chip: #2a241d; }
+}
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body { margin: 0; background: var(--bg); color: var(--ink); font: 17px/1.7 var(--sans); overflow-wrap: anywhere; line-break: strict; }
+main, article, .entry > div { min-width: 0; }
+header { position: sticky; top: 0; z-index: 5; background: color-mix(in srgb, var(--bg) 92%, transparent);
+         backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); border-bottom: 1px solid var(--line); }
+.wrap { max-width: 760px; margin: 0 auto; padding: 0 16px; }
+.top { display: flex; align-items: baseline; gap: 12px; padding: 14px 0 8px; flex-wrap: wrap; }
+h1 { margin: 0; font: 600 22px/1.2 var(--jp); }
+h1 small { font: 14px var(--sans); color: var(--muted); margin-left: 6px; }
+.tabs { display: flex; gap: 6px; padding-bottom: 10px; align-items: center; flex-wrap: wrap; }
+.tab, .chip, button.order { border: 1px solid var(--line); background: var(--card); color: var(--ink);
+       border-radius: 999px; padding: 5px 13px; font: 14px var(--sans); cursor: pointer; }
+.tab.active, .chip.active { background: var(--accent); border-color: var(--accent); color: #fff; }
+input[type=search] { flex: 1 1 180px; min-width: 0; border: 1px solid var(--line); background: var(--card); color: var(--ink);
+       border-radius: 10px; padding: 7px 12px; font: 16px var(--sans); }
+.chips { display: flex; gap: 6px; flex-wrap: wrap; margin: 16px 0 4px; }
+.chip { background: var(--chip); }
+.meta-line { color: var(--muted); font-size: 14px; margin: 10px 0; display: flex; justify-content: space-between; align-items: center; gap: 8px; }
+article { background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 6px 20px 14px; margin: 16px 0; scroll-margin-top: 130px; }
+article h2 { font: 600 20px/1.4 var(--jp); margin: 14px 0 2px; }
+article h2 a { color: inherit; text-decoration: none; }
+.sub { color: var(--muted); font-size: 13px; margin-bottom: 4px; }
+.topic-tag { display: inline-block; background: var(--accent-soft); color: var(--accent); border-radius: 6px; padding: 0 7px; margin-left: 6px; }
+article h3 { font: 600 15px var(--sans); color: var(--accent); margin: 16px 0 4px; letter-spacing: .04em; }
+article ul { padding-left: 1.1em; margin: 4px 0; }
+article li { margin: 8px 0; }
+article p { margin: 6px 0; }
+article strong { font-family: var(--jp); }
+.spoiler { background: var(--ink); color: transparent; border-radius: 4px; cursor: pointer; transition: all .15s; padding: 0 2px; }
+.spoiler.shown { background: var(--accent-soft); color: var(--ink); }
+.entry { display: grid; grid-template-columns: auto 1fr; gap: 2px 14px; padding: 12px 0; border-bottom: 1px solid var(--line); }
+.entry .w { font: 600 22px/1.3 var(--jp); grid-row: span 2; min-width: 2.2em; }
+.entry .r { font-family: var(--jp); }
+.entry .m { color: var(--ink); }
+.entry .d { color: var(--muted); font-size: 13px; }
+.entry .d a { color: var(--muted); }
+h2.section { font: 600 16px var(--sans); color: var(--muted); margin: 24px 0 0; text-transform: uppercase; letter-spacing: .08em; }
+.empty { color: var(--muted); padding: 30px 0; text-align: center; }
+mark { background: #f4d58d; color: inherit; border-radius: 2px; }
+footer { color: var(--muted); font-size: 13px; text-align: center; padding: 30px 0 50px; }
+</style>
+</head>
+<body>
+<header><div class="wrap">
+  <div class="top"><h1>酒ことば<small>Sake vocabulary</small></h1></div>
+  <div class="tabs">
+    <button class="tab active" data-view="lessons">Lessons</button>
+    <button class="tab" data-view="words">Words</button>
+    <button class="tab" data-view="kanji">Kanji</button>
+    <input type="search" id="q" placeholder="Search 麹, こうじ, steam…" autocomplete="off">
+  </div>
+</div></header>
+<main class="wrap" id="main"><div class="empty">Loading…</div></main>
+<footer class="wrap">Lessons by Yoshi · updated daily</footer>
+<script>
+const $ = s => document.querySelector(s);
+const esc = s => String(s ?? "").replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const fmt = d => new Date(d + "T12:00:00").toLocaleDateString(undefined, {weekday: "short", year: "numeric", month: "short", day: "numeric"});
+let D = null, view = "lessons", topic = null, newestFirst = localStorage.getItem("newestFirst") === "1";
+
+function hl(text, q) {
+  const s = esc(text);
+  if (!q) return s;
+  const re = new RegExp(q.replace(/[.*+?^${}()|[\]\\]/g, "\\$&"), "gi");
+  return s.replace(re, m => `<mark>${m}</mark>`);
+}
+const match = (q, ...fields) => !q || fields.some(f => String(f ?? "").toLowerCase().includes(q.toLowerCase()));
+
+function renderLessons(q) {
+  let ls = D.lessons.filter(l => (!topic || l.topic === topic) && match(q, l.text, l.topic));
+  if (newestFirst) ls = [...ls].reverse();
+  const chips = `<div class="chips"><button class="chip ${!topic ? "active" : ""}" data-topic="">All topics</button>` +
+    D.topics.map(t => `<button class="chip ${topic === t ? "active" : ""}" data-topic="${esc(t)}">${esc(t)}</button>`).join("") + `</div>`;
+  const meta = `<div class="meta-line"><span>${ls.length} of ${D.lessons.length} lessons</span>
+    <button class="order" id="order">${newestFirst ? "Newest first ↓" : "Oldest first ↑"}</button></div>`;
+  const body = ls.map((l, i) => `<article id="${l.date}">
+      <h2><a href="#${l.date}">${esc(l.title)}</a></h2>
+      <div class="sub">${fmt(l.date)}${l.topic ? `<span class="topic-tag">${esc(l.topic)}</span>` : ""}</div>
+      ${l.html}</article>`).join("") || `<div class="empty">No lessons match.</div>`;
+  return chips + meta + body;
+}
+
+function renderEntries(list, kind, q) {
+  const items = list.filter(x => kind === "kanji" ? match(q, x.kanji, x.on, x.kun, x.meaning) : match(q, x.word, x.reading, x.meaning, x.topic))
+                    .slice().sort((a, b) => a.date.localeCompare(b.date));
+  const head = `<div class="meta-line"><span>${items.length} ${kind === "kanji" ? "kanji" : "words"}, in the order taught</span></div>`;
+  const rows = items.map(x => kind === "kanji"
+    ? `<div class="entry"><div class="w">${hl(x.kanji, q)}</div>
+        <div><span class="r">${x.on && x.on !== "—" ? "音 " + hl(x.on, q) : ""}${x.kun && x.kun !== "—" ? "　訓 " + hl(x.kun, q) : ""}</span> · <span class="m">${hl(x.meaning, q)}</span></div>
+        <div class="d"><a href="#${x.date}" data-goto="${x.date}">${fmt(x.date)}</a></div></div>`
+    : `<div class="entry"><div class="w">${hl(x.word, q)}</div>
+        <div><span class="r">${hl(x.reading, q)}</span> · <span class="m">${hl(x.meaning, q)}</span></div>
+        <div class="d">${esc(x.topic || "")} · <a href="#${x.date}" data-goto="${x.date}">${fmt(x.date)}</a></div></div>`).join("");
+  return head + (rows || `<div class="empty">Nothing matches.</div>`);
+}
+
+function render() {
+  const q = $("#q").value.trim();
+  $("#main").innerHTML = view === "lessons" ? renderLessons(q)
+    : view === "words" ? renderEntries(D.words, "words", q) : renderEntries(D.kanji, "kanji", q);
+  document.querySelectorAll(".tab").forEach(t => t.classList.toggle("active", t.dataset.view === view));
+}
+
+function goto(date) {
+  view = "lessons"; topic = null; $("#q").value = ""; render();
+  const el = document.getElementById(date);
+  if (el) el.scrollIntoView({behavior: "smooth", block: "start"});
+}
+
+document.addEventListener("click", e => {
+  const t = e.target.closest(".tab"); if (t) { view = t.dataset.view; render(); window.scrollTo(0, 0); return; }
+  const c = e.target.closest(".chip"); if (c) { topic = c.dataset.topic || null; render(); return; }
+  if (e.target.closest("#order")) { newestFirst = !newestFirst; localStorage.setItem("newestFirst", newestFirst ? "1" : "0"); render(); return; }
+  const g = e.target.closest("[data-goto]"); if (g) { e.preventDefault(); history.replaceState(null, "", "#" + g.dataset.goto); goto(g.dataset.goto); return; }
+  const s = e.target.closest(".spoiler"); if (s) s.classList.toggle("shown");
+});
+document.addEventListener("keydown", e => { if (e.key === "Enter" && e.target.classList.contains("spoiler")) e.target.classList.toggle("shown"); });
+$("#q").addEventListener("input", render);
+
+fetch("data.json", {cache: "no-cache"}).then(r => r.json()).then(d => {
+  D = d; render();
+  const h = location.hash.slice(1);
+  if (/^\d{4}-\d{2}-\d{2}$/.test(h)) setTimeout(() => goto(h), 50);
+}).catch(() => { $("#main").innerHTML = `<div class="empty">Couldn't load lessons.</div>`; });
+</script>
+</body>
+</html>
