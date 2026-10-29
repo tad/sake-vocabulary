@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Build and publish Yoshi's sake vocabulary lessons as a static GitHub Pages site.
+"""Build and publish Inosuke's sake vocabulary lessons as a static GitHub Pages site.
 
 Source of truth (read-only here):
   ~/.hermes/profiles/inosuke/workspace/vocab/lessons/YYYY-MM-DD.md
@@ -15,9 +15,55 @@ HOME = os.path.expanduser("~")
 VOCAB = os.path.join(HOME, ".hermes/profiles/inosuke/workspace/vocab")
 REPO = os.path.dirname(os.path.abspath(__file__))
 
+# --- Furigana -----------------------------------------------------------------
+# The lesson markdown writes readings inline, e.g. 精米歩合（せいまいぶあい） or
+# 磨（みが）かれた. On the web page those become <ruby> furigana over the kanji.
+# (The markdown itself stays unchanged: Discord can't show furigana.)
+KANJI = r"[\u3400-\u4dbf\u4e00-\u9fff\uf900-\ufaff々〆ヶ]"
+KANA = r"[\u3041-\u3096\u30a1-\u30faー]"
+_READING = re.compile(rf"((?:{KANJI}|{KANA})+)（({KANA}+)）")
+_CHUNK = re.compile(rf"({KANJI}+)|({KANA}+)")
+
+
+def _ruby_base(run, reading):
+    """Pick the base text for a reading: the trailing kanji run, extended backwards over
+    okurigana (磨き二割三分) only when the kana in between also appears in the reading.
+    Returns (prefix_left_unannotated, html)."""
+    chunks = [(m.group(0), bool(m.group(1))) for m in _CHUNK.finditer(run)]
+    best = None
+    for start in range(len(chunks) - 1, -1, -1):
+        part = chunks[start:]
+        if not part[0][1] or not part[-1][1]:
+            continue  # the base must begin and end with kanji
+        pattern = "".join(f"(.{{{len(t)},}}?)" if is_k else f"({re.escape(t)})" for t, is_k in part)
+        m = re.fullmatch(pattern, reading)
+        if not m:
+            if best:  # a longer base stopped matching; keep the last good one
+                break
+            continue
+        best = (start, part, m)
+    if not best:
+        return None
+    start, part, m = best
+    out = []
+    for (t, is_k), g in zip(part, m.groups()):
+        out.append(f"<ruby>{t}<rt>{g}</rt></ruby>" if is_k else t)
+    return "".join(t for t, _ in chunks[:start]), "".join(out)
+
+
+def furigana(s):
+    def repl(m):
+        r = _ruby_base(m.group(1), m.group(2))
+        if r is None:
+            return m.group(0)
+        prefix, ruby = r
+        return prefix + ruby
+    return _READING.sub(repl, s)
+
 
 def inline(s):
     s = html.escape(s, quote=False)
+    s = furigana(s)
     s = re.sub(r"\|\|(.+?)\|\|", r'<span class="spoiler" tabindex="0" title="Tap to reveal">\1</span>', s)
     s = re.sub(r"\*\*(.+?)\*\*", r"<strong>\1</strong>", s)
     s = re.sub(r"(?<![\w*])\*(?!\s)(.+?)(?<!\s)\*(?![\w*])", r"<em>\1</em>", s)

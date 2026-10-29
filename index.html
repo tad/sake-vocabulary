@@ -58,6 +58,9 @@ article strong { font-family: var(--jp); }
 .entry .d a { color: var(--muted); }
 h2.section { font: 600 16px var(--sans); color: var(--muted); margin: 24px 0 0; text-transform: uppercase; letter-spacing: .08em; }
 .empty { color: var(--muted); padding: 30px 0; text-align: center; }
+article ruby { ruby-position: over; }
+article rt { font-size: .55em; color: var(--muted); font-weight: normal; letter-spacing: 0; }
+article li, article p { line-height: 2.1; }
 mark { background: #f4d58d; color: inherit; border-radius: 2px; }
 footer { color: var(--muted); font-size: 13px; text-align: center; padding: 30px 0 50px; }
 </style>
@@ -73,7 +76,7 @@ footer { color: var(--muted); font-size: 13px; text-align: center; padding: 30px
   </div>
 </div></header>
 <main class="wrap" id="main"><div class="empty">Loading…</div></main>
-<footer class="wrap">Lessons by Yoshi · updated daily</footer>
+<footer class="wrap">Lessons by Inosuke · updated daily</footer>
 <script>
 const $ = s => document.querySelector(s);
 const esc = s => String(s ?? "").replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
