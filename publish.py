@@ -2,8 +2,8 @@
 """Build and publish Yoshi's sake vocabulary lessons as a static GitHub Pages site.
 
 Source of truth (read-only here):
-  ~/.hermes/profiles/yoshi/workspace/vocab/lessons/YYYY-MM-DD.md
-  ~/.hermes/profiles/yoshi/workspace/vocab/taught.json
+  ~/.hermes/profiles/inosuke/workspace/vocab/lessons/YYYY-MM-DD.md
+  ~/.hermes/profiles/inosuke/workspace/vocab/taught.json
 Output (this repo): index.html (static shell), data.json, lessons/*.md (raw copies)
 
 Usage: python3 publish.py            # build, commit, push
@@ -12,7 +12,7 @@ Usage: python3 publish.py            # build, commit, push
 import html, json, os, re, shutil, subprocess, sys
 
 HOME = os.path.expanduser("~")
-VOCAB = os.path.join(HOME, ".hermes/profiles/yoshi/workspace/vocab")
+VOCAB = os.path.join(HOME, ".hermes/profiles/inosuke/workspace/vocab")
 REPO = os.path.dirname(os.path.abspath(__file__))
 
 
